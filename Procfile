@@ -1,1 +1,1 @@
-web gunicorn nj-blog.wsgi
+web gunicorn nj-blog.wsgi --log-file -
