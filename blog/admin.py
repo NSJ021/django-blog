@@ -28,6 +28,19 @@ class PostAdmin(SummernoteModelAdmin):
 
 
 # Register your models here.
+@admin.register(Comment)
+class CommentAdmin(SummernoteModelAdmin):
+    """
+    Display options for admin panel related to blog comments
 
-#admin.site.register(Post)
-admin.site.register(Comment)
+    **Context**
+
+    ``list display``
+        allows post, author, approved and created=on for list display properties
+     ``list filter``
+        allowed list filters, author, created-on and approved
+
+    """
+    list_display = ('post', 'body', 'author', 'approved', 'created_on')
+    list_filter = ('author', 'created_on', 'approved')
+    
