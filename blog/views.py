@@ -12,6 +12,7 @@ class PostList(generic.ListView):
     template_name = "blog/index.html"
     paginate_by = 6
 
+# Post details view
 def post_detail(request, slug):
     """
     Display an individual :model:`blog.Post`.
@@ -32,6 +33,7 @@ def post_detail(request, slug):
     comment_count = post.comments.filter(approved=True).count()
 
     if request.method == "POST":
+        print("Received Post Request")
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
@@ -44,7 +46,7 @@ def post_detail(request, slug):
             )
 
     comment_form = CommentForm()
-
+    print("Render Template")
     return render(
         request,
         "blog/post_detail.html",
