@@ -10,6 +10,9 @@ STATUS =((0, "Draft"), (1, "Published"))
 
 # Post Model
 class Post(models.Model):
+    """
+    Stores a single blog post entry realted to : model: `auth.User`
+    """
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -31,6 +34,9 @@ class Post(models.Model):
 
 # Comment Model
 class Comment(models.Model):
+    """
+    Stores a single comment entry realted to : model: `blog.Post` and `auth.User
+    """
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(

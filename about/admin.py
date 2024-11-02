@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import About, CollaborateRequest
 from django_summernote.admin import SummernoteModelAdmin
+from .models import About, CollaborateRequest
+
 
 
 @admin.register(About)
@@ -16,5 +17,8 @@ class AboutAdmin(SummernoteModelAdmin):
 
 @admin.register(CollaborateRequest)
 class CollaborateRequestAdmin(admin.ModelAdmin):
+    """
+    List display properties, message and if the item has been read or no
+    """
 
     list_display = ('message', 'read',)
